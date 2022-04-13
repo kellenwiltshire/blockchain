@@ -1,14 +1,19 @@
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider } from '@chakra-ui/react';
+import { BlockchainStore, StoreProvider } from '../store';
 
-import theme from '../theme'
-import { AppProps } from 'next/app'
+import theme from '../theme';
+import { AppProps } from 'next/app';
+
+const store = new BlockchainStore();
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <ChakraProvider resetCSS theme={theme}>
-      <Component {...pageProps} />
-    </ChakraProvider>
-  )
+	return (
+		<StoreProvider store={store}>
+			<ChakraProvider resetCSS theme={theme}>
+				<Component {...pageProps} />
+			</ChakraProvider>
+		</StoreProvider>
+	);
 }
 
-export default MyApp
+export default MyApp;
