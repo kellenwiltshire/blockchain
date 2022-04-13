@@ -15,8 +15,10 @@ export const Form: FC = () => {
 				setMesssage('');
 			}}
 		>
-			<Input value={message} onChange={(e) => setMesssage(e.target.value)} placeholder='message' required />
-			<Button type='submit'>Add</Button>
+			<Input value={message} onChange={(e) => setMesssage(e.target.value)} placeholder='message' required mb={2} />
+			<Button type='submit' colorScheme='whiteAlpha'>
+				Add
+			</Button>
 		</form>
 	);
 };

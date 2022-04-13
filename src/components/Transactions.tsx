@@ -1,21 +1,21 @@
 import { FC } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useStore } from '../store';
-import { Heading } from '@chakra-ui/react';
+import { Box, Heading, ListItem, UnorderedList } from '@chakra-ui/react';
 
 export const Transactions: FC = observer(() => {
 	const store = useStore();
 
 	return store.transactions.length > 0 ? (
-		<div>
+		<Box borderWidth='1px' borderRadius='10px' p={2}>
 			<Heading as='h2' size='2xl'>
 				Pending Transactions
 			</Heading>
-			<ul className='pending'>
+			<UnorderedList spacing={3} listStyleType='none'>
 				{store.transactions.map((transaction, i) => {
-					return <li key={i}>{transaction}</li>;
+					return <ListItem key={i}>{transaction}</ListItem>;
 				})}
-			</ul>
-		</div>
+			</UnorderedList>
+		</Box>
 	) : null;
 });
