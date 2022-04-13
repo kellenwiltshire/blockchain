@@ -2,44 +2,21 @@ import { useState, FC } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useStore } from '../store';
 import { Heading, Input, Button, Text } from '@chakra-ui/react';
+import { Container } from '../components/Container';
+import { Main } from '../components/Main';
+import { Title } from '../components/Title';
+import { Form } from '../components/Form';
 
 const Index: FC = () => {
 	return (
-		<main>
-			<Title />
-			<Form />
-			<Transactions />
-			<Blocks />
-		</main>
-	);
-};
-
-const Title: FC = observer(() => {
-	const store = useStore();
-
-	return (
-		<Heading as='h1'>
-			{store.numberBlocks} Blocks({store.valid ? 'Valid' : 'Invalid'})
-		</Heading>
-	);
-});
-
-const Form: FC = () => {
-	const store = useStore();
-	const [message, setMesssage] = useState('');
-
-	return (
-		<form
-			onSubmit={(e) => {
-				e.preventDefault();
-
-				store.addTransaction(message);
-				setMesssage('');
-			}}
-		>
-			<Input value={message} onChange={(e) => setMesssage(e.target.value)} placeholder='message' required />
-			<Button type='submit'>Add</Button>
-		</form>
+		<Container>
+			<Main>
+				<Title />
+				<Form />
+				<Transactions />
+				<Blocks />
+			</Main>
+		</Container>
 	);
 };
 
