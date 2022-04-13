@@ -9,7 +9,7 @@ interface IBlock {
 
 class BlockchainStore {
 	blocks: Array<IBlock> = [];
-	transactions: Array<string> = [];
+	transactions: Array<string> = ['Start'];
 
 	constructor() {
 		makeAutoObservable(this);
